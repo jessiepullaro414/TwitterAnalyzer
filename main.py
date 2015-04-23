@@ -9,18 +9,15 @@ import sys
 
 # Authenticate application and create API object
 print('Authorizing application\r')
-auth = tweepy.OAuthHandler('', '')
+auth = tweepy.OAuthHandler()
 api = tweepy.API(auth)
 
 
 # Collect tweets
 print('')
-if sys.version_info[0] == 2:
-    query = input('Query>')
-    max_number_of_results = input('Max Results>')
-else:
-    query = input('Query>')
-    max_number_of_results = int(input('Max Results>'))
+
+query = raw_input('Query>')
+max_number_of_results = int(raw_input('Max Results>'))
 
 tweets = STA.getTweets(api, query,
                        max=max_number_of_results)  # get 'max' results
